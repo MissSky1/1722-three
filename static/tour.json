@@ -1,0 +1,96 @@
+{
+  "ret": true,
+  "data":{
+    "tourList":[{
+      "id":"1001",
+      "imgUrl":"//img1.qunarzz.com/sight/p0/201403/07/291572a5c6afaf5f4a0e8355380524b5.jpg_110x110_8bda49fa.jpg",
+      "alt": "123",
+      "p": "鹫峰山门票",
+      "adress": "",
+      "sm": "",
+      "price": "9",
+      "redu": "5"
+    },{
+      "id":"1002",
+      "imgUrl":"//img1.qunarzz.com/sight/p0/1612/7a/7a58b13e6df8d7d6a3.img.jpg_110x110_b95f8a38.jpg",
+      "alt": "123",
+      "p": "金祖山景区门票",
+      "adress": "",
+      "sm": "",
+      "price": "22",
+      "redu": "19"
+    },{
+      "id":"1003",
+      "imgUrl":"//img1.qunarzz.com/sight/p0/201403/07/291572a5c6afaf5f4a0e8355380524b5.jpg_110x110_8bda49fa.jpg",
+      "alt": "123",
+      "p": "【北京深度游必选组合】天安门+故宫+恭王府/八达岭/颐和园",
+      "adress": "北京出发",
+      "sm": "|无自费|无购物",
+      "price": "27",
+      "redu": "53"
+    },{
+      "id":"1004",
+      "imgUrl":"http://img1.qunarzz.com/p/tts5/1801/fd/c6a55e9db39ffc02.jpg_110x110_b2b7e621.jpg",
+      "alt": "123",
+      "p": "故宫一日游【故宫讲解+故宫门票+珍宝馆门票 自由可选】",
+      "adress": "北京出发",
+      "sm": "无购物",
+      "price": "27",
+      "redu": "7"
+    },{
+      "id":"1005",
+      "imgUrl":"http://img1.qunarzz.com/sight/p0/1708/2b/2b3b94de99c0a425a3.img.jpg_110x110_684eb80e.jpg",
+      "alt": "123",
+      "p": "八达岭长城往返直通车（送导游讲解）",
+      "adress": "",
+      "sm": "",
+      "price": "30",
+      "redu": "248"
+    },{
+      "id":"1006",
+      "imgUrl":"http://img1.qunarzz.com/p/tts3/1712/b7/583a07eaeaa9cf02.jpg_110x110_d025cd14.jpg",
+      "alt": "123",
+      "p": "【7-11点】八达岭门票+往返直通车+讲解*拒绝低价暗店购物",
+      "adress": "北京出发",
+      "sm": "|无自费|无购物",
+      "price": "30",
+      "redu": "332"
+    },{
+      "id":"1007",
+      "imgUrl":"http://img1.qunarzz.com/p/tts6/1711/e8/82cdff65a67a4802.jpg_110x110_eb11455a.jpg",
+      "alt": "123",
+      "p": "【7-11点发】八达岭长城半日游（含导游讲解），自由多选！",
+      "adress": "北京出发",
+      "sm": "|无自费|无购物",
+      "price": "30",
+      "redu": "60"
+    },{
+      "id":"1008",
+      "imgUrl":"http://img1.qunarzz.com/p/tts9/1801/b3/162c3a2df7e81602.jpg_110x110_4d5c48a4.jpg",
+      "alt": "123",
+      "p": "八达岭长城一日游【7点-12点直通车，地点时间自由选择 】",
+      "adress": "北京出发",
+      "sm": "|无自费|无购物",
+      "price": "30",
+      "redu": "10"
+    },{
+      "id":"1009",
+      "imgUrl":"http://img1.qunarzz.com/sight/p0/1708/2b/2b3b94de99c0a425a3.img.jpg_110x110_684eb80e.jpg",
+      "alt": "123",
+      "p": "八达岭长城成人票",
+      "adress": "",
+      "sm": "",
+      "price": "35",
+      "redu": "3184"
+    },{
+      "id":"1010",
+      "imgUrl":"http://img1.qunarzz.com/p/tts3/1801/58/ab6b51d588058702.jpg_110x110_5b1bbb8c.jpg",
+      "alt": "123",
+      "p": "【7-12点天天发】八达岭长城+往返直通车+门票，自由可选！",
+      "adress": "北京出发",
+      "sm": "|无自费|无购物",
+      "price": "39",
+      "redu": "1988"
+    }]
+  }
+}

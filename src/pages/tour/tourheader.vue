@@ -1,11 +1,11 @@
 <template>
   <div class="header">
-    <div class="back iconfont">&#xe600;</div>
+    <div class="back iconfont">&#xe624;</div>
     <div class="search">
-      <span class="iconfont search-icon">&#xe60b;</span>请输入搜索内容
+      <input class="input" type="text" value="一日游">
     </div>
-    <div class="city">
-      乌鲁木齐
+    <div class="submit">
+      <button class="btn">搜索</button>
     </div>
   </div>
 </template>
@@ -28,30 +28,25 @@ export default {
       text-align: center
       font-size: .4rem
       font-weight: bold
+      color: white
     .search
+      display: block
       flex: 1
       height: .6rem
       line-height: .6rem
       margin: .14rem .2rem
-      padding-left: .4rem
+      padding-left: .2rem
       background: #fff
       border-radius: .1rem
       color: #ccc
-      .search-icon
-        position: relative
-        top: .02rem
-        padding-right: .04rem
-    .city
-      padding:0 .6rem 0 .2rem
+      .input
+        width: 100%
+        border: none
+    .submit
+      padding:0 .4rem 0 .2rem
       position: relative
-      &:before
-        position: absolute
-        top: .4rem
-        right: .16rem
-        content: "\0020"
-        width: 0
-        height: 0
-        border-left: .14rem solid transparent
-        border-right: .14rem solid transparent
-        border-top: .14rem solid #fff
+      color: white
+      .btn
+        border: none
+        background: $bgColor
 </style>

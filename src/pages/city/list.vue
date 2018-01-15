@@ -9,18 +9,18 @@
     <div class="hot-city-container">
       <h3 class="title">热门城市</h3>
       <ul class="content">
-        <li class="hot-city city" v-for="(hotCity, index) of hotCityList" :key="hotCity.id">{{hotCity.city}}</li>
+        <li class="hot-city city" v-for="(hotCity, index) of hotCityList" :key="hotCity.id" @click="handleClick">{{hotCity.city}}</li>
       </ul>
     </div>
     <div class="city-alp-container">
-      <div v-for="(cityList, index) of cityListByAlp" :key="cityList.id">  
+      <div v-for="(cityList, index) of cityListByAlp" :key="cityList.id" class="city-alp-con" ref="cityByAlp">  
         <h3 class="title">{{cityList[0]}}</h3>
         <ul class="cityByAlp-content">
           <li class="cityByAlp" v-for="(city, index) of cityList[1]" :key="city.id">{{city.cityarea}}</li>
         </ul>
       </div>
       <div class="alphabet-all">
-        <div class="alphabet" v-for="(cityList, index) of cityListByAlp" :key="index">{{cityList[0]}}</div>
+        <div class="alphabet" v-for="(cityList, index) of cityListByAlp" :key="index" @click="handleAlpClick(index)">{{cityList[0]}}</div>
       </div>
     </div>
   </div>
@@ -31,11 +31,11 @@ export default {
   name: 'city-list',
   data () {
     return {
-      show: true
+      show: true,
+      city: localStorage.city ? localStorage.city : '北京'
     }
   },
   props: {
-    city: String,
     hotCityList: Array,
     cityListByAlp: Array
   },
@@ -49,7 +49,21 @@ export default {
     },
     handleShowClick () {
       this.show = true
+    },
+    handleClick (e) {
+      this.city = e.target.innerHTML
+      this.$bus.$emit('cityChange', this.city)
+      localStorage.city = this.city
+      this.$router.go(-1)
+    },
+    handleAlpClick (index) {
+      let scrollTop = this.$refs.cityByAlp[index].offsetTop
+      document.documentElement.scrollTop = scrollTop - 44
+      document.body.scrollTop = scrollTop - 44
     }
+  },
+  activated () {
+    this.city = localStorage.city ? localStorage.city : '北京'
   }
 }
 </script>

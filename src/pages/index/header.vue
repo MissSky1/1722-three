@@ -5,14 +5,17 @@
       <span class="iconfont search-icon">&#xe632;</span>请输入搜索内容
     </div>
     <router-link to="/city">
-      <div class="city">北京</div>
+      <div class="city">{{city}}</div>
     </router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'index-header'
+  name: 'index-header',
+  props: {
+    city: String
+  }
 }
 </script>
 

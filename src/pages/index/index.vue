@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-  	<index-header></index-header>
+  	<index-header :city="city"></index-header>
     <index-swiper :list="swiperInfo"></index-swiper>
     <index-icons :list="iconsInfo"></index-icons>
     <div class="city-location">
@@ -37,6 +37,7 @@ export default {
   },
   data () {
     return {
+      city: '',
       swiperInfo: [],
       iconsInfo: [],
       sightsInfo: [],
@@ -45,23 +46,36 @@ export default {
   },
   methods: {
     getIndexData () {
-      axios.get('/api/index.json')
+      const city = localStorage.city ? localStorage.city : '北京'
+      axios.get('/api/index.json?city=' + city)
       .then(this.handleGetDataSucc.bind(this))
       .catch(this.handleGetDataErr.bind(this))
     },
     handleGetDataSucc (res) {
       const data = res.data.data
+      this.city = data.city
       this.swiperInfo = data.swiperList
       this.iconsInfo = data.iconList
       this.sightsInfo = data.sights
       this.travelInfo = data.cityList
+      localStorage.city = data.city
+      console.log(localStorage.city)
     },
     handleGetDataErr () {
       console.log('error')
+    },
+    bindEvents () {
+      this.$bus.$on('cityChange', this.handleCityChange.bind(this))
+    },
+    handleCityChange (value) {
+      this.city = value
+      localStorage.city = value
+      // this.getIndexData()
     }
   },
   created () {
     this.getIndexData()
+    this.bindEvents()
   }
 }
 </script>

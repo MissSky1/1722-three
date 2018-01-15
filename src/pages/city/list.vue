@@ -27,23 +27,27 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'city-list',
   data () {
     return {
-      show: true,
-      city: localStorage.city ? localStorage.city : '北京'
+      show: true
     }
   },
   props: {
     hotCityList: Array,
     cityListByAlp: Array
   },
+  computed: {
+    ...mapState(['city'])
+  },
   mounted () {
     this.$bus.$on('click', this.handleHiddenClick.bind(this))
     this.$bus.$on('show', this.handleShowClick.bind(this))
   },
   methods: {
+    ...mapMutations(['changeCity']),
     handleHiddenClick (value) {
       this.show = false
     },
@@ -51,9 +55,7 @@ export default {
       this.show = true
     },
     handleClick (e) {
-      this.city = e.target.innerHTML
-      this.$bus.$emit('cityChange', this.city)
-      localStorage.city = this.city
+      this.changeCity(e.target.innerText)
       this.$router.go(-1)
     },
     handleAlpClick (index) {
@@ -61,9 +63,6 @@ export default {
       document.documentElement.scrollTop = scrollTop - 44
       document.body.scrollTop = scrollTop - 44
     }
-  },
-  activated () {
-    this.city = localStorage.city ? localStorage.city : '北京'
   }
 }
 </script>

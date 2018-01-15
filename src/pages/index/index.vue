@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-  	<index-header :city="city"></index-header>
+  	<index-header></index-header>
     <index-swiper :list="swiperInfo"></index-swiper>
     <index-icons :list="iconsInfo"></index-icons>
     <div class="city-location">
@@ -25,6 +25,7 @@ import IndexSwiper from './swiper'
 import IndexIcons from './icons'
 import IndexTravel from './travel'
 import IndexBlogroll from './blogroll'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'index',
   components: {
@@ -37,29 +38,33 @@ export default {
   },
   data () {
     return {
-      city: '',
       swiperInfo: [],
       iconsInfo: [],
       sightsInfo: [],
       travelInfo: []
     }
   },
+  computed: {
+    ...mapState({
+      city: 'city'
+    })
+  },
   methods: {
+    ...mapMutations(['changeCity']),
     getIndexData () {
-      const city = localStorage.city ? localStorage.city : '北京'
-      axios.get('/api/index.json?city=' + city)
+      axios.get('/api/index.json?city=' + this.city)
       .then(this.handleGetDataSucc.bind(this))
       .catch(this.handleGetDataErr.bind(this))
     },
     handleGetDataSucc (res) {
       const data = res.data.data
-      this.city = data.city
       this.swiperInfo = data.swiperList
       this.iconsInfo = data.iconList
       this.sightsInfo = data.sights
       this.travelInfo = data.cityList
-      localStorage.city = data.city
-      console.log(localStorage.city)
+      if (!localStorage.city) {
+        this.changeCity(res.data)
+      }
     },
     handleGetDataErr () {
       console.log('error')
@@ -69,8 +74,7 @@ export default {
     },
     handleCityChange (value) {
       this.city = value
-      localStorage.city = value
-      // this.getIndexData()
+      this.getIndexData()
     }
   },
   created () {

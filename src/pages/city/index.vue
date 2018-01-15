@@ -3,7 +3,6 @@
     <city-header></city-header>
     <city-search :cityListByAlp="cityListByAlp"></city-search>
     <city-list class="list"
-              :city="city"
               :hotCityList="hotCityList"
               :cityListByAlp="cityListByAlp">
     </city-list>
@@ -24,7 +23,6 @@ export default {
   },
   data () {
     return {
-      city: '',
       hotCityList: [],
       cityListByAlp: []
     }

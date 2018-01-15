@@ -9,6 +9,7 @@ import VueLazyload from 'vue-lazyload'
 import 'assets/css/reset.css'
 import 'assets/css/iconfont/iconfont.css'
 import 'swiper/dist/css/swiper.css'
+import store from '@/store/'
 
 FastClick.attach(document.body)
 Vue.config.productionTip = false
@@ -27,6 +28,7 @@ Vue.prototype.$bus = bus
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

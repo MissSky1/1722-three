@@ -11,10 +11,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'index-header',
-  props: {
-    city: String
+  computed: {
+    ...mapState(['city'])
   }
 }
 </script>

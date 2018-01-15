@@ -4,15 +4,19 @@
     <div class="search">
       <span class="iconfont search-icon">&#xe632;</span>请输入搜索内容
     </div>
-    <div class="city">
-      北京
-    </div>
+    <router-link to="/city">
+      <div class="city">{{city}}</div>
+    </router-link>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  name: 'index-header'
+  name: 'index-header',
+  computed: {
+    ...mapState(['city'])
+  }
 }
 </script>
 
@@ -45,6 +49,7 @@ export default {
     .city
       padding: 0 .6rem 0 .2rem
       position: relative
+      color: #fff
       &:before
         position: absolute
         top: .35rem

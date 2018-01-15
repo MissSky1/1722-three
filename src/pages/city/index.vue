@@ -1,18 +1,21 @@
 <template>
-  <div>
+  <div class="main"> 
     <city-header></city-header>
-    <city-search></city-search>
-    <city-list :city="city" :hotCity="hotCity" :cityByAlp="cityByAlp"></city-list> 
-  </div>
+    <city-search :cityListByAlp="cityListByAlp"></city-search>
+    <city-list class="list"
+              :hotCityList="hotCityList"
+              :cityListByAlp="cityListByAlp">
+    </city-list>
+  </div> 
 </template>
 
 <script>
 import CityHeader from './header'
 import CitySearch from './search'
-import CityList from './cityList'
+import CityList from './list'
 import axios from 'axios'
 export default {
-  name: 'city',
+  name: 'city-index',
   components: {
     CityHeader,
     CitySearch,
@@ -20,31 +23,41 @@ export default {
   },
   data () {
     return {
-      city: '',
-      hotCity: [],
-      cityByAlp: []
+      hotCityList: [],
+      cityListByAlp: []
     }
   },
   methods: {
-    getCityList () {
+    getCityListInfo () {
       axios.get('/api/cityList.json')
-        .then(this.handleGetDataSucc.bind(this))
-        .catch(this.handleGetDataErr.bind(this))
+        .then(this.handleGetCityListSucc.bind(this))
+        .catch(this.handleGetCityListErr.bind(this))
     },
-    handleGetDataSucc (res) {
+    handleGetCityListSucc (res) {
       const data = res.data.data
       this.city = data.city
-      this.hotCity = data.hotCity
-      this.cityByAlp = data.cityByAlp
+      this.hotCityList = data.hotcity
+      this.cityListByAlp = data.china
     },
-    handleGetDataErr () {
+    handleGetCityListErr () {
       console.log('error')
     }
   },
   created () {
-    this.getCityList()
+    this.getCityListInfo()
   }
 }
 </script>
 
-<style></style>
+<style lang="stylus" scoped>
+  .main
+    display: flex
+    flex-direction: column
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    .list
+      flex: 1
+</style>

@@ -12,17 +12,15 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
-<<<<<<< HEAD
-=======
     "better-scroll": "^1.7.2",
->>>>>>> d65a220756467f8e25388838f634f95de898faff
     "fastclick": "^1.0.6",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "2.6.7",
     "vue-lazyload": "^1.1.4",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

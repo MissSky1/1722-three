@@ -25,6 +25,7 @@ import IndexSwiper from './swiper'
 import IndexIcons from './icons'
 import IndexTravel from './travel'
 import IndexBlogroll from './blogroll'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'index',
   components: {
@@ -43,9 +44,15 @@ export default {
       travelInfo: []
     }
   },
+  computed: {
+    ...mapState({
+      city: 'city'
+    })
+  },
   methods: {
+    ...mapMutations(['changeCity']),
     getIndexData () {
-      axios.get('/api/index.json')
+      axios.get('/api/index.json?city=' + this.city)
       .then(this.handleGetDataSucc.bind(this))
       .catch(this.handleGetDataErr.bind(this))
     },
@@ -55,13 +62,24 @@ export default {
       this.iconsInfo = data.iconList
       this.sightsInfo = data.sights
       this.travelInfo = data.cityList
+      if (!localStorage.city) {
+        this.changeCity(res.data)
+      }
     },
     handleGetDataErr () {
       console.log('error')
+    },
+    bindEvents () {
+      this.$bus.$on('cityChange', this.handleCityChange.bind(this))
+    },
+    handleCityChange (value) {
+      this.city = value
+      this.getIndexData()
     }
   },
   created () {
     this.getIndexData()
+    this.bindEvents()
   }
 }
 </script>

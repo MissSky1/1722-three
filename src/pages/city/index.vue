@@ -59,5 +59,6 @@ export default {
     top: 0
     bottom: 0
     .list
+      overflow: hidden
       flex: 1
 </style>
